@@ -8,16 +8,12 @@
   <title>Document</title>
 </head>
 <body>
-  <audio autoplay>
-    <source src="music/music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
   <header class="header">
     <h1 class="header-title">
-      Лучшему мужу и папе от любящей семьи
+      С днём рождения, Эльдар !
     </h1>
     <p class="desc">
-      Знай, мы тебя любим !
+      Мы собрались здесь сегодня, чтобы отпраздновать особенный день в жизни особенного человека
     </p>
   </header>
 
@@ -38,12 +34,15 @@
     </ul>
 
     <p class="desc">
-      Думаем о тебе каждый день и Тима тоже !
+      Мы желаем тебе всего самого наилучшего в твой день рождения!
     </p>
   </section>
 
   <section class="photos">
     <ul class="photos-list">
+      <li class="photos-list__item">
+        <img src="img/5.jpg" alt="">
+      </li>
       <li class="photos-list__item">
         <img src="img/6.jpg" alt="">
       </li>
@@ -53,34 +52,79 @@
       <li class="photos-list__item">
         <img src="img/8.jpg" alt="">
       </li>
-      <li class="photos-list__item">
-        <img src="img/9.jpg" alt="">
-      </li>
     </ul>
 
     <p class="desc">
-      гордимся и переживаем всей семьёй !
+      Ты приносишь радость в наши жизни, и мы так благодарны, что ты у нас есть
     </p>
   </section>
 
-  <header class="header footer-img">
+  <footer class="header footer-img">
     <div class="footer-shadow"></div>
     <div class="footer-content">
       <h1 class="header-title">
-        С юбилеем !
+        Мы любим тебя!
       </h1>
       <p class="desc">
-        Помни, мы всегда рядом !
+        С днем рождения и успехов во всём !
       </p>
     </div>
-  </header>
+  </footer>
+
+  <div class="image-box">
+    <div class="image-box__container">
+      <img src="img/9.jpg" class="image-box__img" alt="">
+      <div class="close">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-      document.querySelector('audio').play()
-    }, 5000);
-    });    
+      const images = document.querySelectorAll("img");
+      const imageBoxImg = document.querySelector('.image-box__img');
+      images.forEach(img => {
+        img.addEventListener('click', (event) => {
+          document.querySelector(".image-box").style.zIndex = 1;
+          const src = event.target.getAttribute('src');
+          imageBoxImg.setAttribute('src', src);
+        })
+      })
+
+      document.querySelector('.close').addEventListener('click', () => {
+        document.querySelector(".image-box").style.zIndex = -1;
+        imageBoxImg.setAttribute('src', '');
+      })
+
+      colorsFonStart();
+    })
+
+    function colorsFonStart() {
+      const colorElement = document.querySelector(".header");
+
+      const colorPalette = [
+      "#b86d6d",
+      "#c0392b", // Красный
+      "#e74c3c", // Оранжевый
+      "#9b59b6", // Желтый
+      "#8e44ad", // Зеленый
+      "#2980b9", // Синий
+      "#3498db", // Индиго
+      "#1abc9c", // Фиолетовый
+      "#16a085", // Розовый
+      "#2ecc71", // Оранжево-красный
+      "#27ae60", // Оранжево-желтый
+      ];
+
+      let currentIndex = 0;
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % colorPalette.length;
+        colorElement.style.backgroundColor = colorPalette[currentIndex - 1];
+      }, 800);
+    }
   </script>
 </body>
 </html>
